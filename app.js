@@ -9,10 +9,6 @@ global.__basedir = __dirname;
 const mainRoutes = require("./routes/main-routes");
 
 const app = express();
-
-// Main path
-app.use("/", mainRoutes);
-
 // NPM Package used to initialize session
 //const session = require("express-session")
 app.set("view engine", "ejs");
@@ -26,6 +22,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieparser());
 
+// Main path
+app.use("/", mainRoutes);
+
+// Catch exceptions
 process.on("uncaughtException", (error) => {
     console.log("UncaughtException:" + " " + error.message);
     console.error(error.stack);
