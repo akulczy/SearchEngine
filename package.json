@@ -4,7 +4,8 @@
   "description": "IR Project",
   "main": "app.js",
   "scripts": {
-    "test": "npm start"
+    "test": "test",
+    "start": "nodemon app.js"
   },
   "keywords": [
     "ir"

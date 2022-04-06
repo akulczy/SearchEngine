@@ -1,0 +1,12 @@
+.page-topbar  {
+    margin-left: 0rem;
+    padding: 0rem 0.5rem 0rem 3rem;
+}
+
+.page-topbar-title {
+    font-size: 1rem;
+}
+
+.topbar-colour-1 {
+    background-image: linear-gradient(150deg, rgba(255, 255, 255, 0.683), #c2e9fb79 100%);
+}
