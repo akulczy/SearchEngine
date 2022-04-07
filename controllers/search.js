@@ -52,7 +52,7 @@ exports.getVSMResults = async (req, res) => {
     ranked_docs_ids = []
     // Connect with the developed Python API to retrieve ranked documents
     //await axios.post('http://localhost:5000/vsm', {
-    await axios.post('https://group77-ir-api.herokuapp.com/bm25', {
+    await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
         queryVal: queryVal
     })
     .then((response) => {
