@@ -1,5 +1,8 @@
 // Method to send the query that was inserted into the input box
 const sendQuery = () => {
+    // Check which model was selected
+    let modelType = $("#select-model").val();
+
     $("#display-docs").removeClass("container");
     $("#display-docs").empty();
     let queryVal = $("#query-text").val();
@@ -15,9 +18,17 @@ const sendQuery = () => {
         $("#loading-space").addClass(".activeLoad");
     }
 
+    // Determine the right request to submit query to either BM25 or VSM model
+    let urlPath = "";
+    if(modelType == "0") {
+        urlPath = "/query/send/bm25";
+    } else {
+        urlPath = "/query/send/vsm";
+    }
+
     // Post query to back-end
     $.ajax({
-        url: "/query/send/bm25",
+        url: urlPath,
         method: "POST",
         data: { queryVal: queryVal },
         // Actions depending on the status code in the response
@@ -31,8 +42,12 @@ const sendQuery = () => {
 
                 $("#display-docs").addClass("container");
 
+                $("#display-docs").append(`<div class="doc-container"><b><div class="row g-2"><div class="col-sm-10">Documents</div><div class="col-sm-2 checkbox-col">Relevant</div></div></b></div>`);
+
+                $("#display-docs").append(`<div class="title-line"></div>`);
+
                 for(let i = 0; i < documents.length; i++) {
-                    $("#display-docs").append(`<div class="doc-container"><b>${i+1}.</b> (ID: ${ranked_docs_ids[i]}) </br>${documents[i]}</div>`);
+                    $("#display-docs").append(`<div class="doc-container"><div class="docs-id"><b>${i+1}.</b> (ID: ${ranked_docs_ids[i]})</div> </br> <div class="row g-2"><div class="col-sm-10">${documents[i]}</div><div class="col-sm-2 checkbox-col"><input class="form-check-input" type="checkbox" value=""></div></div></div><div class="title-line"></div>`);
                 }
             },
             400: () => {

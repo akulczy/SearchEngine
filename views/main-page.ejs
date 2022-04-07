@@ -3,7 +3,17 @@
 
 <body>
     <%- include("./elements/topbar.ejs") %>
-    <div class="container">
+    <div class="main-title">Search Engine</div>
+    <div class="main-desc">
+        Please choose one of the implemented Information Retrieval models before submitting your query - <span class="txt-colour">Okapi BM25</span> or <span class="txt-colour">Vector Space Model</span>.
+    </div>
+    <div class="main-select">
+        <select class="form-control" id="select-model">
+            <option value="0">Okapi BM25</option>
+            <option value="1">Vector Space Model</option>
+        </select>
+    </div>
+    <div class="container">        
         <form class="row g-2">
             <div class="col-sm-10">
                 <input type="text" class="form-control" placeholder="Insert your query here..." aria-label="Query input" id="query-text" class="query-box">

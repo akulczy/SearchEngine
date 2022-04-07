@@ -50,3 +50,45 @@ body {
 .doc-container {
     margin-bottom: 1.5rem;
 }
+
+.checkbox-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-col input {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.title-line {
+    border-bottom: 1px solid #2b597d;
+    margin: 0 0 1.2rem 0;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2b597d;
+}
+
+.main-desc {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+.txt-colour {
+    color: #2b597d;
+}
+
+.main-select {
+    margin: 0.5rem 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-select select {
+    width: 40%;
+}
