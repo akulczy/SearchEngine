@@ -2,6 +2,15 @@ body {
     font-family: 'Questrial', sans-serif;
 }
 
+a, a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: #000;
+}
+
 .page-topbar  {
     margin-left: 0rem;
     padding: 0rem 0.5rem 0rem 3rem;

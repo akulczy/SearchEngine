@@ -9,4 +9,7 @@ router.get("/", searchViews.getMainPage);
 // POST - Query to the BM25 model
 router.post("/query/send/bm25", searchViews.getBM25Results);
 
+// POST - Query to the VSM model
+router.post("/query/send/vsm", searchViews.getVSMResults);
+
 module.exports = router;
