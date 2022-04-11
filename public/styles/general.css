@@ -76,15 +76,41 @@ a:hover {
     margin: 0 0 1.2rem 0;
 }
 
+.title-line-main {
+    width: 50%;
+    padding-top: 0.5rem;    
+}
+
+.title-line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .main-title {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.3rem;
     color: #2b597d;
+    font-family: 'Playfair Display SC', serif;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
 }
 
 .main-desc {
     text-align: center;
     padding: 1rem 0 1rem 0;
+}
+
+.secondary-desc {
+    text-align: center;
+    padding: 0.5rem 0 1rem 0;
+}
+
+.main-no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.5rem;
 }
 
 .txt-colour {
@@ -100,4 +126,10 @@ a:hover {
 
 .main-select select {
     width: 40%;
+}
+
+.btn-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

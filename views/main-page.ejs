@@ -4,6 +4,9 @@
 <body>
     <%- include("./elements/topbar.ejs") %>
     <div class="main-title">Search Engine</div>
+    <div class="title-line-container">
+        <div class="title-line title-line-main"></div>
+    </div>    
     <div class="main-desc">
         Please choose one of the implemented Information Retrieval models before submitting your query - <span class="txt-colour">Okapi BM25</span> or <span class="txt-colour">Vector Space Model</span>.
     </div>
@@ -12,6 +15,16 @@
             <option value="0">Okapi BM25</option>
             <option value="1">Vector Space Model</option>
         </select>
+    </div>
+    <div class="secondary-desc">
+        Please select <span class="txt-colour">the maximum number of document to retrieve.</span>
+    </div>
+    <div class="main-no">
+        <form class="row g-1">
+            <div class="col-sm-10">
+                <input type="number" class="form-control" value="20" aria-label="No of documents" id="doc-no" class="doc-no-box">
+            </div>
+        </form>
     </div>
     <div class="container">        
         <form class="row g-2">
