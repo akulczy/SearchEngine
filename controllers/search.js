@@ -85,8 +85,8 @@ exports.relevanceFeedbackBM25 = async(req, res) => {
     output_docs = []
     ranked_docs_ids = []
     // Connect with the developed Python API to retrieve ranked documents
-    await axios.post('http://localhost:5000/bm25/feedback', {
-    //await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
+    //await axios.post('http://localhost:5000/bm25/feedback', {
+    await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
         queryVal: queryVal,
         docNo: docNo,
         relevanceList: relevanceList
@@ -116,8 +116,8 @@ exports.relevanceFeedbackVSM = async(req, res) => {
     output_docs = []
     ranked_docs_ids = []
     // Connect with the developed Python API to retrieve ranked documents
-    await axios.post('http://localhost:5000/vsm/feedback', {
-    //await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
+    //await axios.post('http://localhost:5000/vsm/feedback', {
+    await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
         queryVal: queryVal,
         docNo: docNo,
         relevanceList: relevanceList
