@@ -56,7 +56,7 @@ const sendQuery = () => {
                 $("#display-docs").append(`<div class="title-line"></div>`);
 
                 for(let i = 0; i < documents.length; i++) {
-                    $("#display-docs").append(`<div class="doc-container"><div class="docs-id"><b>${i+1}.</b> (ID: ${ranked_docs_ids[i]})</div> </br> <div class="row g-2"><div class="col-sm-10">${documents[i]}</div><div class="col-sm-2 checkbox-col"><input class="form-check-input" type="checkbox" value="${ranked_docs_ids[i]}" class="feedback-check"></div></div></div><div class="title-line"></div>`);
+                    $("#display-docs").append(`<div class="doc-container"><div class="docs-id"><b>${i+1}.</b> (ID: ${ranked_docs_ids[i]})</div> </br> <div class="row g-2"><div class="col-sm-10">${documents[i]}</div><div class="col-sm-2 checkbox-col"><input class="form-check-input feedback-check" type="checkbox" value="${ranked_docs_ids[i]}"></div></div></div><div class="title-line"></div>`);
                 }
 
                 // Append button which submit relevance feedback
@@ -82,31 +82,26 @@ $("#submit-query").click(() => {
 });
 
 const submitRelevanceFeedback = () => {
-    $("#display-docs").removeClass("container");
-    $("#display-docs").empty();
-
     // Collect all checkboxes
-    let checkboxes = $("input[type='checkbox']");
+    let checkboxes = $(".feedback-check");
     // Object to store checkboxes and corresponding values
-    let checkboxesObj = {}
-    for(let check in checkboxes){
-        if($(check).is(":checked")) {
-            checkboxesObj.append({
-                "id": check.val(),
-                "relevant": true
-            })
+    let checkboxesObj = [];
+    for(let i = 0; i < checkboxes.length; i++) {
+        let checkb = checkboxes[i];
+        if($(checkb).prop("checked")) {
+            checkboxesObj.push(1);
         } else {
-            checkboxesObj.append({
-                "id": check.val(),
-                "relevant": true
-            }) 
+            checkboxesObj.push(0);
         }
     }
 
     // Check how many documents
-    let docsNo = checkboxes.length;
+    let docNo = checkboxes.length;
     // Check which model was selected
     let modelType = $("#select-model").val();
+
+    $("#display-docs").removeClass("container");
+    $("#display-docs").empty();
 
     // Displaying spinner element once the submit button is clicked
     if(!($("#loading-space").hasClass(".activeLoad"))) {
@@ -126,7 +121,7 @@ const submitRelevanceFeedback = () => {
     $.ajax({
         url: urlPath,
         method: "POST",
-        data: { checkboxesObj: checkboxesObj, docsNo: docsNo, query: currentQuery },
+        data: { docNo: docNo, queryVal: currentQuery, checkboxesObj: JSON.stringify(checkboxesObj) },
         // Actions depending on the status code in the response
         statusCode: {
             200: (data) => {
@@ -146,10 +141,7 @@ const submitRelevanceFeedback = () => {
                     $("#display-docs").append(`<div class="doc-container"><div class="docs-id"><b>${i+1}.</b> (ID: ${ranked_docs_ids[i]})</div> </br> <div class="row g-2"><div class="col-sm-10">${documents[i]}</div><div class="col-sm-2 checkbox-col"><input class="form-check-input" type="checkbox" value="${ranked_docs_ids[i]}" class="feedback-check"></div></div></div><div class="title-line"></div>`);
                 }
 
-                // Append button which submit relevance feedback
-                $("#display-docs").append(`<div class="btn-align">
-                    <button type="button" class="btn btn-primary" id="submit-feedback">Submit Relevance Feedback</button>
-                </div>`);
+                
             },
             400: () => {
                 $("#loading-space").removeClass(".activeLoad");
