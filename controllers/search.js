@@ -25,8 +25,8 @@ exports.getBM25Results = async (req, res) => {
     output_docs = []
     ranked_docs_ids = []
     // Connect with the developed Python API to retrieve ranked documents
-    await axios.post('http://localhost:5000/bm25', {
-    //await axios.post('https://group77-ir-api.herokuapp.com/bm25', {
+    //await axios.post('http://localhost:5000/bm25', {
+    await axios.post('https://group77-ir-api.herokuapp.com/bm25', {
         queryVal: queryVal,
         docNo: docNo
     })
@@ -55,8 +55,8 @@ exports.getVSMResults = async (req, res) => {
     output_docs = []
     ranked_docs_ids = []
     // Connect with the developed Python API to retrieve ranked documents
-    await axios.post('http://localhost:5000/vsm', {
-    //await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
+    //await axios.post('http://localhost:5000/vsm', {
+    await axios.post('https://group77-ir-api.herokuapp.com/vsm', {
         queryVal: queryVal,
         docNo: docNo
     })
