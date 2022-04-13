@@ -131,14 +131,20 @@ const submitRelevanceFeedback = () => {
                 $("#loading-space").removeClass(".activeLoad");
                 $(".spinner-border").remove();
 
-                $("#display-docs").addClass("container");
-
-                $("#display-docs").append(`<div class="doc-container"><b><div class="row g-2"><div class="col-sm-10">Documents</div><div class="col-sm-2 checkbox-col">Relevant</div></div></b></div>`);
+                $("#display-docs").addClass("container");                
 
                 $("#display-docs").append(`<div class="title-line"></div>`);
 
                 for(let i = 0; i < documents.length; i++) {
-                    $("#display-docs").append(`<div class="doc-container"><div class="docs-id"><b>${i+1}.</b> (ID: ${ranked_docs_ids[i]})</div> </br> <div class="row g-2"><div class="col-sm-10">${documents[i]}</div><div class="col-sm-2 checkbox-col"><input class="form-check-input" type="checkbox" value="${ranked_docs_ids[i]}" class="feedback-check"></div></div></div><div class="title-line"></div>`);
+                    $("#display-docs").append(`<div class="doc-container">
+                        <div class="docs-id">
+                            <b>${i+1}.</b> (ID: ${ranked_docs_ids[i]})
+                        </div> </br> 
+                        <div class="row g-2">
+                            <div class="col-sm-12">${documents[i]}</div>
+                        </div>
+                        </div>
+                        <div class="title-line"></div>`);
                 }
 
                 
