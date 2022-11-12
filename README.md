@@ -16,12 +16,17 @@ npm start
 5. The application is running on port 3000.
 ## Endpoints
 > GET /
+
 Open the main page.
 > POST /query/send/bm25
+
 Send your query data to the BM25 model.
 > POST /query/send/vsm
+
 Send your query data to the VSM model. 
 > POST /query/send/bm25/feedback
+
 Send your query data to the BM25 model, along with the relevance feedback data.
 > POST /query/send/vsm/feedback
+
 Send your query data to the VSM model, along with the relevance feedback data.
